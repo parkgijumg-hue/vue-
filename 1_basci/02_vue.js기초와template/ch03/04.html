@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- v-model 디렉티브 
+     - 양방향 데이터 바인딩
+     - model 변경이 view에 영향을 주고, view 변경이 model에  영향을 줌 
+     
+     *형식 
+     <태그명 v-model="속성">
+     -->
+    <div id="app">
+      <!-- v-model: 입력값과 name을 양방향으로 연결 -->
+      <!-- 입력창에서 타이핑하면 name이 즉시 변경됨 -->
+      <input type="text" v-model="name" />
+      <br />
+      <!-- name 값이 실시간으로 화면에 출력됨 -->
+      <!-- 즉, 화면 입력 ⇄ 데이터가 서로 동기화됨 -->
+      입력한 값: <span>{{name}}</span>
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // name의 초기값은 빈 문자열
+          return { name: '' };
+          // name 데이터는 v-model 에 의해서 input과 바인딩 됨
+          //  input 요소의 값이 변경되면  name 데이터가 자동으로 업데이트 되괴
+          // name 데이터가 변경되면 input 요소의 값이 자동으로 업데이트  됨
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

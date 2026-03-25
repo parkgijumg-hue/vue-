@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model로 입력값(amount)과 input을 양방향 바인딩 -->
+      <!-- 입력값은 문자열로 들어오지만 비교 시 숫자로 변환되어 사용됨 -->
+      예금액: <input type="text" v-model="amount" />
+      <!-- v-if 조건이 true일 때만 이미지가 화면에 나타남 -->
+      <!-- v-if는 조건이 false면 요소가 DOM에서 완전히 사라짐 -->
+
+      <!-- amount가 0보다 작으면(마이너스) 경고 아이콘 표시 -->
+      <img
+        v-if="amount  < 0"
+        src="https://ontactsvc.bmaster.kro.kr/img/error.png"
+        title="마이너스는 허용하지 않습니다."
+        style="width: 15px; height: 15px; vertical-align: middle"
+      />
+    </div>
+
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // amount는 입력값을 담는 반응형 데이터 (처음은 빈 문자열)
+          return {
+            amount: '',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
