@@ -54,11 +54,13 @@ export default {
   data() {
     return {
       con: {
+        id: new Date().getTime(),
         name: '',
         gender: '',
         age: '',
         email: '',
         github: '',
+        isEditing: false,
       },
     };
   },
@@ -81,7 +83,7 @@ export default {
         return;
       }
       this.$emit('add-contact', this.con);
-      this.con = '';
+      this.con = {};
     },
   },
 };

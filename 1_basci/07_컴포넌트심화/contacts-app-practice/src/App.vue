@@ -64,11 +64,13 @@ export default {
   methods: {
     addContact(id) {
       this.contacts.push({
+        id: new Date().getTime(),
         name: id.name,
         gender: id.gender,
         age: id.age,
         email: id.email,
         github: id.github,
+        isEditing: false,
       });
     },
     deleteContact(id) {
