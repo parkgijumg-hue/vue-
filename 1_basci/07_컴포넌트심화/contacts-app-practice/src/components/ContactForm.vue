@@ -41,7 +41,12 @@
         />
       </div>
       <div class="col-md-1">
-        <button class="btn btn-primary w-100" @click="addContact">추가</button>
+        <button
+          class="btn btn-primary w-100"
+          @click="$emit('add-contact', addContact(e))"
+        >
+          추가
+        </button>
       </div>
     </div>
   </div>
