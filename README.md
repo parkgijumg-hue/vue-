@@ -82,3 +82,7 @@ props나 computed 결과 → 그대로 사용
   defineEmits는 실행할 때 쓰는 함수가 아니라,
 컴파일러에게 “이 컴포넌트는 어떤 이벤트를 낸다”라고 알려주는 선언이라서
 반드시 <script setup>의 최상단에 있어야 합니다.
+
+
+setup() 함수 사용 → return 필요
+<script setup> 사용 → return 필요 없음
