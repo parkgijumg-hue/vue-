@@ -50,3 +50,35 @@ props: {
 사용 정리 (짧게)
 props: 자식에게 데이터 넘길 때
 emit: 자식에서 부모에게 “이벤트/신호” 보낼 때
+
+
+<script setup> 
+ 사용하면 코드가 한결 수원해짐
+
+  원래 코드에서 export , component 부분 삭제하면 됨 
+  emit 은 $ 삭제 가능 
+  그러나 emit 과 props 를 사용할때 
+  defineEmits or defineProps 를 사용해줘야함 
+
+  1. 이 값이 “내가 만든 상태”야?
+
+Yes → ref/reactive 필요
+No (props로 받음) → 필요 없음
+2. 화면에 보이는 값이 “내가 여기서 바뀌어”?
+
+Yes → ref/reactive 필요
+No → 필요 없음
+3. 템플릿에서 쓰는 변수가 “직접 선언한 값”이야?
+
+직접 선언했고, 값이 변함 → ref/reactive
+props나 computed 결과 → 그대로 사용
+한 줄 요약
+
+내가 만든 상태 + 내가 바꾸는 값 = ref/reactive
+부모가 준 값(= props) = 그냥 사용
+
+
+
+  defineEmits는 실행할 때 쓰는 함수가 아니라,
+컴파일러에게 “이 컴포넌트는 어떤 이벤트를 낸다”라고 알려주는 선언이라서
+반드시 <script setup>의 최상단에 있어야 합니다.
