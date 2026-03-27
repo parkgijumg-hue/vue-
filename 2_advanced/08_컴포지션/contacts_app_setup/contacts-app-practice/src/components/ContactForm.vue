@@ -47,13 +47,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ContactForm',
-
-  data() {
-    return {
-      con: {
+<!-- con: {
         id: new Date().getTime(),
         name: '',
         gender: '',
@@ -61,30 +55,37 @@ export default {
         email: '',
         github: '',
         isEditing: false,
-      },
-    };
-  },
+      } -->
+<script setup>
+import { ref } from 'vue';
+const con = ref({
+  id: new Date().getTime(),
+  name: '',
+  gender: '',
+  age: '',
+  email: '',
+  github: '',
+  isEditing: false,
+});
 
-  methods: {
-    // 이름이 입력 안된 경우 '이름을 입력하세요' 알림창
-    // 이메일이 입력 안된 경우 '이메일을 입력하세요' 알림창
-    // 둘 다 입력이 된 경우 연락처 추가
-    addContact(e) {
-      if (this.con.name.length == 0) {
-        alert('이름을 입력하세요');
-        return;
-      }
-      if (this.con.email.length == 0) {
-        alert('이메일을 입력하세요');
-        return;
-      }
-      if (this.con.age <= 0) {
-        alert('정확한 나이를 기입하십시오.');
-        return;
-      }
-      this.$emit('add-contact', this.con);
-      this.con = {};
-    },
-  },
+const addContact = (e) => {
+  if (con.value.name.length == 0) {
+    alert('이름을 입력하세요');
+    return;
+  }
+  if (con.value.email.length == 0) {
+    alert('이메일을 입력하세요');
+    return;
+  }
+  if (con.value.age <= 0) {
+    alert('정확한 나이를 기입하십시오.');
+    return;
+  }
+  // console.log(con);
+
+  emit('add-contact', con.value);
+
+  con.value = {};
 };
+const emit = defineEmits(['add-contact']);
 </script>
