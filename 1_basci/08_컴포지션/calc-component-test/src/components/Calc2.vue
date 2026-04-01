@@ -8,6 +8,13 @@
 </template>
 <script>
 import { ref } from 'vue';
+/* ref()
+ - 원시 타입 데이터를 반응형 데이터로 변환
+ -원시 타입 데이터를 반환하는 것이 아니라 객체를 반환함
+ 
+ -script 태그 내부: ref 는 객체이므로 .value로 점근해야함
+ -template 태그 내부 : vue가 자동으로 .value를 해석하므로 생략 가능
+ */
 export default {
   name: 'Calc2',
   setup() {
