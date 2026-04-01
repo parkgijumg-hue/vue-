@@ -28,6 +28,7 @@ export default {
   margin-top: 10px;
 }
 
+/* Font Awesome 아이콘 CSS 불러오기 */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 .fa {
   padding: 5px;

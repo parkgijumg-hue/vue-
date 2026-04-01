@@ -1,5 +1,6 @@
 <template>
   <!-- /about 경로로 들어오면 보여줄 화면 -->
+  <!-- card/card-body: 부트스트랩 카드 UI 스타일 -->
   <div class="card card-body">
     <h2>About</h2>
     <!-- 현재 요청된 전체 경로를 화면에 출력 -->
