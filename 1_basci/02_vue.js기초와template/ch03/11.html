@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model로 balance와 input을 양방향 연결 -->
+      잔고: <input type="text" v-model="balance" />
+      <br />
+      회원님의 등급:
+      <!-- 조건에 맞는 등급 하나만 화면에 표시됨 -->
+      <span v-if="balance>1000000">Gold</span>
+      <span v-else-if="balance>=500000">Silver</span>
+      <span v-else-if="balance>=200000">Bronze</span>
+      <span v-else="balance">Basic</span>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // 초기 잔고값(숫자). 입력값이 바뀌면 등급이 즉시 갱신됨
+          return { balance: 0 };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

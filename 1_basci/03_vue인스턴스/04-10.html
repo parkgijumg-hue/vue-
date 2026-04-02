@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model.number: 입력값을 숫자로 변환 -->
+      1보다 큰수: <input type="text" v-model.number="num" /><br />
+      <!-- computed.sum: 계산 결과를 화면에 표시 -->
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+    </div>
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      
+        <!-- <script src="https://unpkg.com/vue"></script>
+   <script>
+    let vm = Vue.createApp({
+        name: "App",
+        data(){return{
+
+   }}
+    }).mount('#app') 
+   </script>
+   -->
+      
+        <!-- Vue 라이브러리 로드 -->
+        <script src="https://unpkg.com/vue"></script>
+        <script>
+          // Vue 앱 생성 후 #app에 마운트
+          let vm = Vue.createApp({
+            name: 'App',
+            data() {
+              // num: 입력값 저장(반응형)
+              return { num: 0 };
+            },
+            computed: {
+              // computed: num이 바뀔 때마다 자동 재계산
+              sum() {
+                // parseInt: 문자열 -> 정수
+                let n = parseInt(this.num);
+                // NaN 체크: 숫자가 아니면 0
+                if (Number.isNaN(n)) return 0;
+                // 1부터 n까지의 합 공식
+                return (n * (n + 1)) / 2;
+              },
+            },
+            created() {
+              // created: Vue 인스턴스 생성 직후 실행
+              console.log('##created');
+            },
+            mounted() {
+              // mounted: DOM에 마운트된 직후 실행
+              console.log('##mounted');
+            },
+            updated() {
+              // updated: 데이터 변경으로 화면이 업데이트될 때 실행
+              console.log('##updated');
+            },
+          }).mount('#app');
+        </script>
+      </body>
+    </html>
+ 

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- :value는 v-bind의 축약형 → message 값을 input의 value로 바인딩 -->
+      <!-- v-bind는 "데이터 → 화면" 단방향 바인딩 -->
+      <input type="text" :value="message" />
+      <br />
+      <!-- :src는 v-bind로 이미지 경로를 연결 -->
+      <!-- imagePath가 바뀌면 img src가 자동으로 갱신됨 -->
+      <img :src="imagePath" />
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // 화면에 사용할 반응형 데이터
+          return {
+            message: 'v-bind 디렉티브',
+            // 이미지 파일 경로 (현재 파일 기준 상대경로)
+            imagePath: './image.jpeg',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

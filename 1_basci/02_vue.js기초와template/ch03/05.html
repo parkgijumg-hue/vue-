@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- v-model: 양방향 데이터 바인딩
+     *주로 form 요소에 바인딩
+     - input,select,textarea  등
+      -->
+    <div id="app">
+      <div>
+        <h2>취미생활</h2>
+        <label for="check">
+          <!-- v-model로 체크박스 값을 hobby 배열에 추가/삭제 -->
+          <input type="checkbox" value="A" v-model="hobby" id="check" />
+          운동
+        </label>
+        <!-- labe 태그 안에  input이 들어가 있으면 for , id 속성 사용 안해도 괜찮음 -->
+        <label >
+          <!-- 같은 v-model을 쓰면 여러 개 선택 가능 -->
+          <input type="checkbox" value="B" v-model="hobby"  />
+          독서
+        </label for="check">
+        <label>
+          <input type="checkbox" value="C" v-model="hobby" id="check"/>
+          음악
+        </label>
+        <label for="check">
+          <input type="checkbox" value="D" v-model="hobby" id="check"/>
+          댄스
+        </label>
+        <label for="check">
+          <input type="checkbox" value="E" v-model="hobby" id="check"/>
+          역사
+        </label>
+      </div>
+      <div>
+        <h2>상품 분류 선택</h2>
+        <!-- select의 선택값이 caegory에 저장됨 -->
+        <!-- option의 value가 실제로 저장되는 값 -->
+        <select v-model="caegory">
+          <option value="">----상품 분류를선택하세요.</option>
+          <option value="c01">레저</option>
+          <option value="c02">가전</option>
+          <option value="c03">음식</option>
+          <option value="c04">도서</option>
+          <option value="c05">주방</option>
+        </select>
+      </div>
+      <hr />
+      <div>
+        <!-- hobby 배열을 문자열로 합쳐 보여줌 -->
+         <!-- 배열.join(구분자) -->
+        선택한 취미: {{hobby.join(',')}} <br />
+        <!-- 선택한 상품 분류 코드 표시 -->
+        선택한 상품 분류: {{caegory}}
+      </div>
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // data에서 화면에 쓸 반응형 상태를 반환
+          return {
+            // 체크박스 선택값들이 배열로 들어감
+            hobby: [],
+            // select에서 고른 값이 저장됨
+            caegory: '',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

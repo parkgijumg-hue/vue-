@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model.number: 입력값을 숫자로 변환하여 num에 저장 -->
+      1보다 큰 수: <input type="text" v-model.number="num" />
+      <br />
+      <!-- methods.sum()을 호출해 계산 결과 출력 -->
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum()}}</span><br />
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // let: 변수 선언(블록 스코프)
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // data: 화면에 사용할 반응형 상태 반환
+          return { num: 0 };
+        },
+        methods: {
+          // methods: 템플릿에서 호출하는 함수 모음
+          sum() {
+            // this: Vue 인스턴스(data, methods에 접근)
+            console.log('##num' + this.num);
+            // parseInt: 문자열을 정수로 변환
+            let n = parseInt(this.num);
+            // NaN 체크: 숫자가 아니면 0 반환
+            if (Number.isNaN(n)) return 0;
+            // 1부터 n까지의 합 공식
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

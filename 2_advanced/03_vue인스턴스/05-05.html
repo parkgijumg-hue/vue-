@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div
+        <!-- @contextmenu: 우클릭 이벤트를 가로챔 (브라우저 기본 메뉴를 막기 위함) -->
+        @contextmenu="ctxStop"
+        <!-- 화면 전체를 덮도록 절대 위치 지정 -->
+        style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px"
+      >
+        <!-- @click: 클릭 시 confirmFB 메서드 실행 -->
+        <a href="https://facebook.com" @click="confirmFB">페이스북</a>
+      </div>
+      <div>
+        <!-- Vue 라이브러리 로드 -->
+        <script src="https://unpkg.com/vue"></script>
+        <script>
+          // Vue 앱 생성 후 #app에 마운트
+          let vm = Vue.createApp({
+            name: 'App',
+            data() {
+              // data: 화면에 사용할 반응형 상태(여기서는 없음)
+              return {};
+            },
+            methods: {
+              // ctxStop: 우클릭 기본 메뉴를 막는 함수
+              ctxStop(e) {
+                // preventDefault: 기본 동작(우클릭 메뉴) 취소
+                e.preventDefault();
+              },
+              // confirmFB: 페이스북 이동 전 확인창을 띄움
+              confirmFB(e) {
+                // confirm이 false이면 이동을 막음
+                if (!confirm('페이스북으로 이동할까요?')) {
+                  e.preventDefault();
+                }
+              },
+            },
+          }).mount('#app');
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
