@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      위의 내용에동의하십니까?
+      <!-- 체크되면 agree가 'yes', 해제되면 'no'가 됨 -->
+      <input
+        type="checkbox"
+        v-model="agree"
+        true-value="yes"
+        false-value="no"
+      />
+      <hr />
+      <!-- 현재 agree 값 출력 -->
+      <span>선택된값:{{agree}}</span>
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // agree의 초기값이 'no'이므로 처음엔 체크 해제 상태
+          // 기본적으로 체크박스는 true/false지만, 여기서는 yes/no로 바꿔 사용
+          return {
+            agree: 'no',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

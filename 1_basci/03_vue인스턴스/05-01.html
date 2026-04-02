@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model.number: 입력값을 숫자로 변환해 amount에 저장 -->
+      금액: <input type="text" v-model.number="amount" /><br />
+      <!-- v-on:click 축약 없음: 클릭 시 balance에 금액을 더함 -->
+      <button v-on:click="balance+=parseInt(amount)">입금</button>
+      <!-- @click: v-on의 축약. 클릭 시 balance에서 금액을 뺌 -->
+      <button @click="balance-=parseInt(amount)">인출</button>
+      <br />
+      <!-- {{ }}: 텍스트 보간법, balance 값을 출력 -->
+      <h3>계좌잔고: [{{balance}}]</h3>
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // amount: 입력 금액, balance: 현재 잔고
+          return {
+            amount: 0,
+            balance: 0,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

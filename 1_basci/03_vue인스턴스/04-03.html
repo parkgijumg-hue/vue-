@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 2)num데이터 바인딩 -> 값 입력 시 data 옵션에 작성된 num 값 변경 -->
+      <!-- v-model.number: 입력값을 숫자로 자동 변환(문자열 → 숫자) -->
+      <!-- num은 data()에서 선언한 "반응형 변수" -->
+      1보다 큰수: <input type="text" v-model.number="num" />
+      <br />
+      <!-- 4) sum() 반환괎 바인딩-> 병경된 num값으로 다시 랜더링 -->
+      <!-- {{ }}: 텍스트 보간법. sum 계산 결과를 화면에 표시 -->
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합: <span>{{sum}}</span><br />
+    </div>
+    <!-- Vue 라이브러리 로드 (CDN) -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // let: 변수를 선언하는 키워드 (블록 스코프)
+      let vm = Vue.createApp({
+        name: 'App', // 애플리케이션 이름 설정
+        data() {
+          // 1) data 옵션에서 객체  return -> proxy로 매핑
+          // -> 추적,관찰 수행
+          // return: 함수에서 값을 돌려주는 예약어
+          return { num: 0 };
+        },
+        computed: {
+          //3) data 옵션에 작성된 num값 변경시
+          //computed 옵션에 작성된 sum() 수행
+          sum() {
+            // this.num == data 옵션에 작성된 num값
+            // this: 현재 Vue 인스턴스(=data, methods, computed에 접근)
+            console.log('## num: ' + this.num);
+            let n = parseInt(this.num);
+            //parseInt(문자) : 숫자로 변경
+
+            //NaN(Not a Number): 숫자가 아님
+            //Number,isNaN(값) : NaN이 맞으면 true, 아니면 false 반환
+            if (Number.isNaN(n)) return 0;
+            //return: 값 반환 및 함수 종료
+
+            // 1부터 n까지의 합 공식
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

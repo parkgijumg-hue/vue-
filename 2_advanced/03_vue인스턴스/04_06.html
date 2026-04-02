@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 2) x 입력 바인딩: v-model.number는 입력값을 숫자로 변환 -->
+      x: <input type="text" v-model.number="x" /><br />
+      <!-- 2) y 입력 바인딩: 숫자로 변환된 값이 y에 저장 -->
+      y: <input type="text" v-model.number="y" /><br />
+      <!-- 5) sum 결과 출력: {{ }}는 텍스트 보간법 -->
+      덧셈 결과: {{sum}}
+    </div>
+    <!-- Vue 라이브러리 로드 (CDN) -->
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      // let: 변수 선언(블록 스코프)
+      let vm = Vue.createApp({
+        name: 'App', // App은 컴포넌트 이름(디버깅용)
+        data() {
+          // 1) data()는 화면에 사용할 반응형 상태를 반환
+          return {
+            x: 0, // 변수: 첫 번째 입력값(숫자)
+            y: 0, // 변수: 두 번째 입력값(숫자)
+            sum: 0, // 변수: 합계 결과
+          };
+        },
+        watch: {
+          // 3) watch: x가 바뀔 때마다 실행되는 감시자
+          x(current, old) {
+            // current: 변경 후 값, old: 변경 전 값
+            console.log(`##x: ${old} --> ${current}`);
+            // this: Vue 인스턴스(data 접근)
+            // v-model.number를 써도 빈값/잘못된 입력은 NaN 가능 → Number()로 안전 처리
+            // this.sum = current + this.y // (문자열 결합 위험 때문에 주석)
+            let result = Number(current) + Number(this.y);
+            // isNaN: 숫자가 아니면 true
+            if (isNaN(result)) this.sum = 0;
+            else this.sum = result;
+          },
+          // 4) watch: y가 바뀔 때마다 실행되는 감시자
+          y(current, old) {
+            console.log(`##y:${old} --> ${current}`);
+            let result = Number(this.x) + Number(current);
+            if (isNaN(result)) this.sum = 0;
+            else this.sum = result;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

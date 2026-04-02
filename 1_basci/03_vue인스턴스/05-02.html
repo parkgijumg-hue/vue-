@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model.number: 입력값을 숫자로 변환해 amount에 저장 -->
+      금액: <input type="text" v-model.number="amount" /><br />
+      <!-- @click: 클릭 시 methods의 deposit 함수 실행 -->
+      <button @click="deposit">입금</button>
+      <!-- @click: 클릭 시 methods의 withdraw 함수 실행 -->
+      <button @click="withdraw">인출</button>
+      <br />
+      <!-- {{ }}: 텍스트 보간법으로 balance 출력 -->
+      <h3>계좌 잔고: [{{balance}}]</h3>
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // amount: 입력 금액, balance: 현재 잔고
+          return {
+            amount: 0,
+            balance: 0,
+          };
+        },
+        methods: {
+          // deposit: 입금 처리(유효성 검사 후 balance 증가)
+          deposit() {
+            let amt = parseInt(this.amount);
+            if (amt <= 0) {
+              alert('0보다 큰 값을 예금하세요.');
+            } else {
+              this.balance += amt;
+            }
+          },
+          // withdraw: 인출 처리(유효성/잔고 검사 후 balance 감소)
+          withdraw() {
+            let amt = parseInt(this.amount);
+            if (amt <= 0) {
+              alert('0보다 큰 값을 인출하세요.');
+            } else if (amt > this.balance) {
+              alert('잔고가 부족합니다.');
+            } else {
+              this.balance -= amt;
+            }
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

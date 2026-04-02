@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- :value는 v-bind 축약 → name 값을 input value로 바인딩 -->
+      <!-- @input은 입력 이벤트 → name 값을 직접 갱신 -->
+      <input type="text" :value="name" @input="(e)=>this.name=e.target.value" />
+      <br />
+      <!-- {{ }}: 텍스트 보간법으로 name 출력 -->
+      이름: <span>{{name}}</span>
+    </div>
+    <!-- Vue 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      // Vue 앱 생성 후 #app에 마운트
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          // name: 입력값을 저장하는 반응형 데이터
+          return {
+            name: '',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
