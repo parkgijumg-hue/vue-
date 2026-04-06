@@ -1,35 +1,33 @@
 <template>
   <div>
-    <h2>콘솔확인하기</h2>
+    <h2>콘솔 확인하기</h2>
   </div>
 </template>
 
 <script setup>
-//axios : 서버랑 데이터를 주고 받는 도구
 import axios from 'axios';
+// axios : 서버랑 데이터를 주고 받는 도구
 
 const requestAPI = () => {
   console.log('axios');
 
   // 프록시 서버 주소 변경 전
-  //const url = 'http://localhost:3000/todos';
+  // const url = 'http://localhost:3000/todos/1';
 
   // 프록시 서버 주소 변경 후
-  const url = '/api/todos';
+  const url = '/api/todos/2';
 
-  //axios.get(rul) : 해당 url로 요청 보내기
-  // .then((res)=>{}) 또는 async , await
-  axios
-    .get(url)
-    .then((res) => {
-      console.log(res);
-      console.log(url);
-    })
-    .then();
-  // then 이어써도 됨
+  // axios.get(url) : 해당 url로 요청 보내기
+  // .then((resp)=>{ }) : 서버로 부터 온 응답이 resp에 담김
+  axios.get(url).then((resp) => {
+    console.log(resp);
+    console.log(url);
+  });
 };
-requestAPI(); //함수 호출
+
+requestAPI(); // 함수 호출
 </script>
+
 <!--  
   CORS 란
   - 다른 출처의 리소스를 공유할 수 있도록 허용하는 메커니즘
@@ -52,4 +50,5 @@ requestAPI(); //함수 호출
   2. 백엔드 서버에서 CORS 헤더 설정
 
 -->
+
 <style scoped></style>

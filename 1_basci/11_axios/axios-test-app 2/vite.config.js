@@ -12,12 +12,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  // 프록시 설정
 
+  // 프록시 설정
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000', //실제 API 서버 주소
+        target: 'http://localhost:3000', // 실제 API 서버 주소,
         changeOrigin: true, // 원본 서버 주소를 변경하지 않고 프록시 서버 주소로 변경
 
         // 프록시 서버 주소 변경

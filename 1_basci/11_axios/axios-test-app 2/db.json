@@ -23,6 +23,16 @@
       "todo": "ES6 공부",
       "desc": "ES6공부를 해야 합니다",
       "done": false
+    },
+    {
+      "todo": "복습하기",
+      "desc": "이해가 될 떄까지",
+      "id": "3AG9yQS"
+    },
+    {
+      "todo": "복습하기",
+      "desc": "이해가 될 떄까지",
+      "id": "NjQ3wTm"
     }
   ]
 }
