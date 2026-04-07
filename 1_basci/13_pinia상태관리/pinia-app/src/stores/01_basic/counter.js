@@ -33,6 +33,11 @@ export const useCounterStore = defineStore('counter', () => {
     count.value++;
   }
 
+  //0으로 초기화
+  function reset() {
+    count.value = 0;
+  }
+
   // 사용할 상태와 메소드 반환
-  return { count, doubleCount, increment };
+  return { count, doubleCount, increment, reset, selfIncrement };
 });

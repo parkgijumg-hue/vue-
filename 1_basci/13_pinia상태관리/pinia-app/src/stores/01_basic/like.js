@@ -23,5 +23,6 @@ export const useLikeStore = defineStore('like', () => {
   // like 5배 증가한 값만 보여줄 뿐 원본 like 값은 안바뀜
   const fivelike = computed(() => like.value * 5);
 
+  //사용할 상태, 상태값 반환
   return { like, increase, decrease, fivelike };
 });
